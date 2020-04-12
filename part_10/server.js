@@ -256,7 +256,7 @@ client.on('message', async message => {
         message.channel.send(`${user.user.tag} is now unmuted.`);
       }, ms(time))
       
-      client.mute.set(message.author.id, timer);
+      client.mute.set(user.user.id, timer);
       message.channel.send(`${user.user.tag} is now muted for **${ms(ms(time), {long: true})}**`);
     }
   }
@@ -275,8 +275,8 @@ client.on('message', async message => {
     if (!user.roles.cache.find(r => r.name === "Muted")) return message.channel.send("The user doesn't get muted.");
     
     await user.roles.remove(role.id).catch(err => message.channel.send(`Something went wrong: ${err}`));
-    await clearTimeout(client.mute.get(message.author.id));
-    await client.mute.delete(message.author.id);
+    await clearTimeout(client.mute.get(user.user.id));
+    await client.mute.delete(user.user.id);
     await message.channel.send(`${user.user.tag} is now unmuted.`);
   }
 });
