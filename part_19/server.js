@@ -13,16 +13,16 @@ client.on("messageReactionAdd", async (reaction, user) => {
   
   if (user.bot) return; // If the user was a bot, return.
   if (!reaction.message.guild) return; // If the user was reacting something but not in the guild/server, ignore them.
-  if (reaction.message.guild.id !== "520423098906968065") return; // Use this if your bot was only for one server/private server.
+  if (reaction.message.guild.id !== "YOUR_SERVER_ID") return; // Use this if your bot was only for one server/private server.
   
-  if (reaction.message.channel.id === "708551760645587014") { // This is a #self-roles channel.
+  if (reaction.message.channel.id === "SELF_ROLES_CHANNEL_ID") { // This is a #self-roles channel.
     if (reaction.emoji.name === "1️⃣") {
-      await reaction.message.guild.members.cache.get(user.id).roles.add("708554596817174559") // Minecraft role.
+      await reaction.message.guild.members.cache.get(user.id).roles.add("ROLE_ID1") // Minecraft role.
       return user.send("Minecraft role was given!").catch(() => console.log("Failed to send DM."));
     }
     
     if (reaction.emoji.name === "2️⃣") {
-      await reaction.message.guild.members.cache.get(user.id).roles.add("708554654409293894"); // Roblox role.
+      await reaction.message.guild.members.cache.get(user.id).roles.add("ROLE_ID2"); // Roblox role.
       return user.send("Roblox role was given!").catch(() => console.log("Failed to send DM."));
     }
   } else {
@@ -37,16 +37,16 @@ client.on("messageReactionRemove", async (reaction, user) => {
   
   if (user.bot) return;
   if (!reaction.message.guild) return;
-  if (reaction.message.guild.id !== "520423098906968065") return;
+  if (reaction.message.guild.id !== "YOUR_SERVER_ID") return;
   
-  if (reaction.message.channel.id === "708551760645587014") {
+  if (reaction.message.channel.id === "SELF_ROLES_CHANNEL_ID") {
     if (reaction.emoji.name === "1️⃣") {
-      await reaction.message.guild.members.cache.get(user.id).roles.remove("708554596817174559") // Minecraft role removed.
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("ROLE_ID1") // Minecraft role removed.
       return user.send("Minecraft role was taken!").catch(() => console.log("Failed to send DM."));
     }
     
     if (reaction.emoji.name === "2️⃣") {
-      await reaction.message.guild.members.cache.get(user.id).roles.remove("708554654409293894") // Roblox role removed.
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("ROLE_ID2") // Roblox role removed.
       return user.send("Roblox role was taken!").catch(() => console.log("Failed to send DM."));
     }
   } else {
@@ -73,7 +73,7 @@ client.on('message', async message => {
   let cmd = args.shift().toLowerCase();
   
   if (msg.startsWith(prefix + "reaction-roles-embed")) {
-    let channel = client.channels.cache.get("708551760645587014"); // We want to sent the embed, directly to this channel.
+    let channel = client.channels.cache.get("SELF_ROLES_CHANNEL_ID"); // We want to sent the embed, directly to this channel.
     const embed = new Discord.MessageEmbed()
     .setColor(0xffffff)
     .setTitle("Pick your roles!")
