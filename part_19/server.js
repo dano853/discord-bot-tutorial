@@ -46,7 +46,7 @@ client.on("messageReactionRemove", async (reaction, user) => {
     }
     
     if (reaction.emoji.name === "2️⃣") {
-      await reaction.message.guild.members.cache.get(user.id).roles.remove("708554654409293894") // Minecraft role removed.
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("708554654409293894") // Roblox role removed.
       return user.send("Roblox role was taken!").catch(() => console.log("Failed to send DM."));
     }
   } else {
