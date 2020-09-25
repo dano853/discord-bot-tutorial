@@ -17,6 +17,8 @@ let m = require('moment-duration-format'),
 
 client.mute = new Map();
 
+require('-/uptime.js')
+
 let memberlog = "706829876316864513";
 
 client.on("guildMemberAdd", member => {
